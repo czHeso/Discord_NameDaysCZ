@@ -58,7 +58,7 @@ suspend fun main() = runBlocking {
     var kdoMaSvatek = client.get(url).body<Svatek>()
     println(kdoMaSvatek)
 
-    val token = "INSERT_YOUR_TOKEN"
+    val token = "TOKEN_DISCORD"
 
     val currentDateTime: java.util.Date = java.util.Date()
     println(currentDateTime)
@@ -68,13 +68,16 @@ suspend fun main() = runBlocking {
 
     val targetTime = LocalTime.parse("08:00").toString()
 
-    val channelIds = listOf("977874654737879070", "1147477222588960789", "1168636911015952484")
+    val channelIds = listOf("Discord_ROOM_ID", "Discord_ROOM_ID", "Discord_ROOM_ID")
 
     while(true)
     {
         Thread.sleep(59000)
+        println(kdoMaSvatek)
         val timeNow = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).toString()
         println(timeNow)
+        kdoMaSvatek = client.get(url).body<Svatek>()
+        println(kdoMaSvatek)
         if(timeNow == targetTime){
 
             val jda = JDABuilder.createDefault(token)
